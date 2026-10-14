@@ -182,7 +182,6 @@ body .col-text h3.ai-title { color: var(--ai-color); }
     width: 100%; max-width: 600px; aspect-ratio: 16 / 9; 
     background: #fff; border: 3px solid #fbbc04; border-radius: 12px; 
     display: flex; align-items: center; justify-content: center; color: #888;
-    background-image: url('https://www.eology.net/wp-content/uploads/2025/10/Bildschirmfoto-2025-10-14-um-13.30.06.png'); 
     background-size: cover; background-position: top center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 .hybrid-quiz-container {
