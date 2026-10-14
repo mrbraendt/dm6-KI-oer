@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room: KI-Reboot</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            background-color: #2b2b2b;
+            padding: 2rem;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .status-bar {
+            background-color: #000;
+            color: red;
+            padding: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border: 1px solid red;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        input[type="text"] {
+            background: #000;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 10px;
+            font-family: inherit;
+            font-size: 1.2em;
+            width: 80%;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        button {
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            font-family: inherit;
+        }
+
+        button:hover {
+            background-color: #fff;
+        }
+
+        .hint {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container" id="game-box">
+        <div id="level-0">
+            <h1>⚠️ SYSTEMFEHLER ⚠️</h1>
+            <p>Willkommen im KI-Labor.</p>
+            <p>Unsere KI hat sich aufgehängt und die Labortür verriegelt. Wir müssen das System manuell neu starten!</p>
+            <p>Bist du bereit, die KI zu reparieren?</p>
+            <button onclick="nextLevel(1)">Systemscan starten</button>
+        </div>
+
+        <div id="level-1" class="hidden">
+            <div class="status-bar">SYSTEMSTATUS: KRITISCH - SPEICHER LEER</div>
+            <h2>Level 1: Der Treibstoff</h2>
+            <p>"Ich bin das Futter für die KI. Ohne mich kann sie nichts lernen. Du findest mich in Büchern, Bildern und
+                im ganzen Internet."</p>
+            <p>Was bin ich?</p>
+            <input type="text" id="input-1" placeholder="Antwort eingeben...">
+            <button onclick="checkAnswer(1, ['DATEN', 'DATA', 'BÜCHER'])">Eingabe bestätigen</button>
+            <p class="hint">Tipp: Es ist das, was die KI "liest".</p>
+        </div>
+
+        <div id="level-2" class="hidden">
+            <div class="status-bar">SYSTEMSTATUS: WARNUNG - GEHIRN ZU KLEIN</div>
+            <h2>Level 2: Die Struktur</h2>
+            <p>System läuft, aber die KI versteht nichts! Wir müssen die "Gehirn-Größe" einstellen.</p>
+            <p>Wie nennt man die Stellschrauben im Gehirn der KI, die bestimmen, wie schlau sie sein kann?</p>
+            <input type="text" id="input-2" placeholder="P_ _ _ _ _ T _ R">
+            <button onclick="checkAnswer(2, ['PARAMETER', 'PARAMETERN'])">Justieren</button>
+            <p class="hint">Tipp: Ein schwieriges Wort mit 'P'.</p>
+        </div>
+
+        <div id="level-3" class="hidden">
+            <div class="status-bar">SYSTEMSTATUS: AKKU LEER</div>
+            <h2>Level 3: Die Power</h2>
+            <p>Fast geschafft! Die KI weiß alles, aber sie rechnet zu langsam.</p>
+            <p>Was brauchen wir, um riesige Mengen Daten schnell zu verarbeiten?</p>
+            <p><i>Löse das Anagramm: M O R T S</i></p>
+            <input type="text" id="input-3" placeholder="Lösung...">
+            <button onclick="checkAnswer(3, ['STROM', 'RECHENPOWER', 'ENERGIE'])">Starten</button>
+            <p class="hint">Tipp: Ohne das geht dem Computer der Saft aus.</p>
+        </div>
+
+        <div id="level-4" class="hidden">
+            <h1 style="color: #00ff00;">✅ SYSTEM ONLINE</h1>
+            <p>Gute Arbeit! Die KI läuft wieder stabil.</p>
+            <p>Die Labortür ist jetzt offen.</p>
+            <button onclick="location.reload()">Nochmal spielen</button>
+            <br><br>
+            <p style="color:#aaa; font-size:0.85em; margin-bottom:5px;">Weiter zur Hauptseite:</p>
+            <a href="https://herr-brandt.github.io/dm6-KI-oer/" style="color: #00ff00; font-weight:bold; font-size:1.1em;">▶ Zurück zu Herr Brandt</a>
+            <br><br>
+            <a href="./index.html" style="color: #888; font-size:0.8em;">Zur KI-Lerneinheit</a>
+        </div>
+    </div>
+
+    <script>
+        function nextLevel(level) {
+            // Alle Level verstecken
+            document.querySelectorAll('.game-container > div').forEach(el => el.classList.add('hidden'));
+            // Gewünschtes Level zeigen
+            document.getElementById('level-' + level).classList.remove('hidden');
+        }
+
+        function checkAnswer(level, validAnswers) {
+            const input = document.getElementById('input-' + level).value.toUpperCase().trim();
+
+            if (validAnswers.includes(input)) {
+                alert("Richtig! Zugriff gewährt.");
+                nextLevel(level + 1);
+            } else {
+                alert("Fehler! Das System erkennt diese Eingabe nicht. Versuch es nochmal.");
+                // Kleiner Wackeleffekt bei Fehler
+                const box = document.getElementById('game-box');
+                box.style.borderColor = 'red';
+                setTimeout(() => box.style.borderColor = '#00ff00', 300);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

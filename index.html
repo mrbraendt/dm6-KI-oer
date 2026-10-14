@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Künstliche Intelligenz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-area">
+            <h1>KI 🤖</h1>
+        </div>
+
+        <div class="stepper" id="stepper-nav">
+            <button class="step-btn" data-target="start">Start</button>
+            <button class="step-btn" data-target="google">1. Suche</button>
+            <button class="step-btn" data-target="ai">2. KI Grundlagen 1</button>
+            <button class="step-btn" data-target="lab">3. KI Grundlagen 2</button>
+            <button class="step-btn" data-target="lab2">4. KI Grundlagen 3</button>
+            <button class="step-btn" data-target="hybrid">5. Hybrid</button>
+            <button class="step-btn" data-target="mission">6. Mission</button>
+            <button class="step-btn" data-target="school">7. KI & Schule</button>
+            <button class="step-btn" data-target="freunde">8. KI & Freundschaft</button>
+        </div>
+    </header>
+
+    <main id="view-start" class="single-layout active">
+        <div class="start-container" id="content-start"></div>
+    </main>
+
+    <main id="view-google" class="split-layout">
+        <div class="col-text" id="text-google"></div>
+
+        <div class="interactive-area">
+            <div class="col-tools" id="tools-google">
+                <div class="tool-header">👇 Setze die Bausteine in das richtige Feld ein:</div>
+                <div id="toolbox-google" class="toolbox-container"></div>
+            </div>
+
+            <div class="arrow-separator">⬇️</div>
+
+            <div class="col-puzzle" id="puzzle-google"></div>
+        </div>
+    </main>
+
+    <main id="view-ai" class="split-layout">
+        <div class="col-text" id="text-ai"></div>
+
+        <div class="interactive-area">
+            <div class="col-tools" id="tools-ai">
+                <div class="tool-header">👇 Setze die Bausteine in das richtige Feld ein:</div>
+                <div id="toolbox-ai" class="toolbox-container"></div>
+            </div>
+
+            <div class="arrow-separator">⬇️</div>
+
+            <div class="col-puzzle" id="puzzle-ai"></div>
+        </div>
+    </main>
+
+    <main id="view-lab" class="single-layout">
+        <div class="lab-container" id="content-lab">
+            <div class="lab-card">
+                <h2 style="color: var(--lab-bg);">⚙️ Das KI-Labor: Wie lernt der Computer?</h2>
+                <div id="lab-intro-text"></div>
+            </div>
+        </div>
+    </main>
+
+    <main id="view-lab2" class="single-layout">
+        <div class="lab-container" id="content-lab2">
+            <div class="lab-card">
+                <h2 style="color: var(--lab-bg);">⚙️ Das KI-Labor: Experiment 2</h2>
+                <div id="lab2-text"></div>
+            </div>
+            <div class="lab-card" style="background: #0f172a; border-color: #334155;">
+                <div class="simulator-box">
+                    <div style="color: #94a3b8;">
+                        <label class="sim-label">🧠 Gehirn-Größe (Parameter)</label>
+                        <input type="range" id="sim-params" min="1" max="100" value="20">
+                        <label class="sim-label">📚 Bücher-Menge (Daten)</label>
+                        <input type="range" id="sim-data" min="1" max="100" value="20">
+                        <label class="sim-label">⚡ Energiebedarf der Computer (Strom)</label>
+                        <input type="range" id="sim-compute" min="1" max="100" value="20">
+                    </div>
+                    <div class="sim-output">
+                        <h3 style="color: var(--lab-color); margin:0 0 15px 0;">KI STATUS</h3>
+                        <p style="margin:5px 0;">Schlauheit (IQ): <span id="iq-val">10</span>%</p>
+                        <div class="bar-container">
+                            <div id="bar-iq" class="bar-fill" style="width:10%; background:var(--lab-color);"></div>
+                        </div>
+                        <p style="margin:15px 0 5px 0;">Stromverbrauch:</p>
+                        <div class="bar-container">
+                            <div id="bar-nrg" class="bar-fill"
+                                style="width:5%; background:linear-gradient(90deg, yellow, red);"></div>
+                        </div>
+                        <div style="margin-top:20px; border-top:1px solid #333; padding-top:10px;">
+                            <p style="margin:0 0 10px 0; color: var(--lab-color); font-weight: bold;">Die KI kann jetzt:
+                            </p>
+                            <span id="b1" class="badge">💬 Texte schreiben</span>
+                            <span id="b2" class="badge">➗ Mathe</span>
+                            <span id="b3" class="badge">💻 Programmieren</span>
+                            <span id="b4" class="badge">🧠 Logik (schlau nachdenken)</span>
+                        </div>
+                        <div id="sim-warn" style="color: #ff5555; font-size: 0.8rem; margin-top: 10px; display: none;">
+                            ⚠️ Zu wenig Computer-Power!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="view-hybrid" class="single-layout">
+        <div class="col-text" id="text-hybrid"></div>
+    </main>
+
+
+    <main id="view-mission" class="single-layout">
+        <div class="mission-container">
+            <div style="text-align:center; margin-bottom:30px;" id="text-mission-intro"></div>
+
+            <h3 style="text-align:center;">Die Kandidaten (Öffne sie in neuen Tabs):</h3>
+            <div class="ai-tools-grid" id="mission-tools"></div>
+
+            <div id="mission-tasks"></div>
+        </div>
+    </main>
+
+    <main id="view-school" class="single-layout">
+        <div class="mission-container">
+            <div style="text-align:center; margin-bottom:30px;">
+                <h1 style="color: var(--primary);">🎓 KI als Lernpartner</h1>
+                <p style="font-size:1.1rem; color:#555;">KIs sind nicht zum Abschreiben da, sondern zum Üben! Hier sind
+                    die besten Tricks für deine Fächer.</p>
+            </div>
+            <div
+                style="background: #e8f0fe; padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px solid var(--primary);">
+                <strong>Auftrag</strong>: Teste die Fragen/Aufgaben mit deiner Lieblings-KI und schau wie sie dir beim
+                Lernen helfen kann. Schreibe dann in Stichworten deine Erfahrung auf und wofür du KI in der Schule
+                zukünftig einsetzen könntest.
+            </div>
+
+            <div
+                style="background: #fff3cd; padding: 20px; border-radius: 12px; margin: 20px 0 40px 0; border: 2px solid #ffeb3b; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <div style="display:flex; align-items:center; justify-content:space-between; cursor:pointer; flex-wrap:wrap; gap:8px;"
+                    onclick="(function(){var c=document.getElementById('profi-anleitung-body');var btn=document.getElementById('profi-toggle-btn');var isOpen=c.style.display!=='none';c.style.display=isOpen?'none':'block';btn.textContent=isOpen?'▼ Anzeigen':'▲ Einklappen';})()">
+                    <h2 style="color: #f57c00; margin: 0;">🤖 Profi-Anleitung: So wirst du zum KI-Experten
+                        <small style="font-weight:normal; font-size:0.65em; color:#a06000;">(optional)</small>
+                    </h2>
+                    <button id="profi-toggle-btn"
+                        style="background:#f57c00;color:white;border:none;border-radius:8px;padding:6px 14px;font-size:0.9rem;cursor:pointer;">▼ Anzeigen</button>
+                </div>
+                <div id="profi-anleitung-body" style="display:none; margin-top:16px;">
+                <p>Hast du schon mal eine Antwort von der KI bekommen, die totaler Quatsch war? Das liegt meistens nicht
+                    an der KI, sondern am Prompt (so nennt man den Befehl, den du eintippst). Hier sind die vier
+                    wichtigsten Tricks:</p>
+
+                <ol style="line-height: 1.8;">
+                    <li><strong>Gib der KI eine Rolle (Persona) 👤</strong><br>
+                        Sag der KI, wer sie sein soll. Wenn sie nur „jemand“ ist, antwortet sie langweilig.<br>
+                        <em>Schlecht:</em> „Schreib einen Text über Vulkane.“<br>
+                        <em>Besser:</em> „Du bist ein berühmter Forscher für Vulkane. Erkläre einem 12-jährigen Kind,
+                        wie ein Ausbruch funktioniert.“
+                    </li>
+
+                    <li><strong>Gib der KI alle Infos (Kontext) 📚</strong><br>
+                        Die KI kann keine Gedanken lesen. Wenn du ihr nicht sagst, was genau du brauchst, rät sie
+                        einfach irgendwas (das nennt man „Halluzinieren“).<br>
+                        <em>Tipp:</em> Schreib genau auf, für wen der Text ist, wie lang er sein soll und welche
+                        wichtigen Fakten unbedingt rein müssen.<br>
+                        <strong>Der „Keine Lügen“-Trick:</strong> Sag der KI: „Wenn du die Antwort nicht weißt, sag
+                        lieber 'Ich weiß es nicht', statt etwas zu erfinden.“
+                    </li>
+
+                    <li><strong>Zeig der KI Beispiele 📝</strong><br>
+                        Anstatt nur zu erklären, wie das Ergebnis aussehen soll, zeig ihr ein Beispiel.<br>
+                        <em>Beispiel:</em> „Ich möchte, dass du Witze schreibst. Hier ist ein Beispiel, das ich lustig
+                        finde: [Dein Witz]. Schreib jetzt einen neuen Witz in diesem Stil.“
+                    </li>
+
+                    <li><strong>Lass die KI nachdenken 🧠</strong><br>
+                        Das ist der wichtigste Trick für schwere Aufgaben (z.B. Mathe).<br>
+                        <em>Befehl:</em> Schreib am Ende deines Prompts immer: „Denke Schritt für Schritt nach, bevor du
+                        antwortest.“<br>
+                        Dadurch macht die KI viel weniger Fehler, weil sie erst den Weg zur Lösung plant.
+                    </li>
+                </ol>
+
+                <div
+                    style="background: #ffebee; padding: 15px; border-radius: 8px; border-left: 5px solid #f44336; margin: 20px 0;">
+                    <strong>✨ Die wichtigste Regel</strong><br>
+                    Bevor du etwas eintippst, nimm dir eine Minute Zeit und überlege: „Könnte ein echter Mensch
+                    verstehen, was ich von ihm will?“ Wenn dein Auftrag für einen Menschen zu ungenau ist, wird auch die
+                    KI scheitern.
+                </div>
+
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; border-left: 5px solid #4caf50;">
+                    <strong>Zusammenfassung für deinen Prompt:</strong><br>
+                    <ul>
+                        <li>Wer soll die KI sein? (Rolle)</li>
+                        <li>Was genau soll sie tun? (Aufgabe)</li>
+                        <li>Welche Infos braucht sie? (Kontext)</li>
+                        <li>Wie soll das Ergebnis aussehen? (Format)</li>
+                    </ul>
+                </div>
+
+                <p style="text-align: center; font-size: 1.2em; color: #f57c00;"><strong>Viel Spaß beim Ausprobieren!
+                        🚀</strong></p>
+                </div><!-- /profi-anleitung-body -->
+            </div>
+
+            <div id="school-prompts-grid" class="school-grid"></div>
+        </div>
+    </main>
+
+    <main id="view-freunde" class="single-layout">
+        <div class="mission-container" id="content-freunde"></div>
+    </main>
+
+    <footer class="footer-nav">
+        <div class="task-hint" id="footer-hint">Lade Inhalte...</div>
+        <button class="next-btn" id="next-btn">
+            Weiter <span>➡️</span>
+        </button>
+    </footer>
+
+    <div id="term-popup">Info</div>
+
+    <script src="content.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
